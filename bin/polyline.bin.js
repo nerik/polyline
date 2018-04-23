@@ -24,7 +24,8 @@ process.stdin.on('end', function() {
     if (!converted) {
       exit();
     }
-    process.stdout.write(JSON.stringify(converted));
+    var str = (mode === '--encode' || mode === '--fromGeoJSON') ? converted.toString() : JSON.stringify(converted);
+    process.stdout.write(str);
   }
 });
 
